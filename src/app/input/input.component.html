@@ -1,0 +1,14 @@
+<div>
+  <p>Please enter a financial number such as “250k”, “10m”, or “.5b”:</p>
+  <label for="quantity">Financial Number:</label>&nbsp;&nbsp;
+  <input id="quantity" value="" [formControl]="quantity" (keyup.enter)="displayResult()">&nbsp;&nbsp;&nbsp;
+  <button (click)="displayResult()" [disabled]="quantity.invalid">Display</button>
+  <ul *ngIf="quantity.errors">
+    <li *ngIf="quantity.touched && quantity.errors['required']">
+      <span class="error">Financial Number is Required</span>
+    </li>
+    <li *ngIf="quantity.dirty && quantity.errors['quantity']">
+      <span class="error">Invalid Financial Number Format must be 250K, 10m or .5b</span>
+    </li>
+  </ul>
+</div>
